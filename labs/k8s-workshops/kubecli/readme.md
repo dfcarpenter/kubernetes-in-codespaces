@@ -132,10 +132,10 @@ Kubernetes documentation.
 $ kubectl config get-contexts
 ```
 
-2. Create a new context called `minidev` within the `minikube` cluster with the `dev` namespace, as the
-`minikube` user.
+2. Create a new context called `minidev` within the `docker-desktop` cluster with the `dev` namespace, as the
+`docker-desktop` user.
 ```
-$ kubectl config set-context minidev --cluster=minikube --user=minikube --namespace=dev
+$ kubectl config set-context minidev --cluster=docker-desktop --user=docker-desktop --namespace=dev
 ```
 
 3. View the newly added context.

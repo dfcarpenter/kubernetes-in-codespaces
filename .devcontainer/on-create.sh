@@ -8,6 +8,7 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')    on-create start" >> "$HOME/status"
 # clone repos
 git clone https://github.com/cse-labs/imdb-app /workspaces/imdb-app
 git clone https://github.com/microsoft/webvalidate /workspaces/webvalidate
+git clone https://github.com/dfcarpenter/flux2-kustomize-azarc.git /workspaces/gitops-flux-azarc
 
 export REPO_BASE=$PWD
 export PATH="$PATH:$REPO_BASE/bin"
@@ -54,8 +55,16 @@ tar -xvzf kic.tar.gz
 rm kic.tar.gz
 mv kic bin
 
+
 echo "generating kic completion"
 kic completion zsh > "$HOME/.oh-my-zsh/completions/_kic"
+
+echo "adding grafana tanka cli"
+curl -fSL -o "/usr/local/bin/tk" "https://github.com/grafana/tanka/releases/download/v0.22.1/tk-linux-amd64"
+chmod a+x "/usr/local/bin/tk"
+
+echo "adding flux cli"
+curl -s https://fluxcd.io/install.sh | sudo bash
 
 echo "creating k3d cluster"
 kic cluster rebuild
