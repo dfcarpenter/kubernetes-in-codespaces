@@ -9,6 +9,8 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')    on-create start" >> "$HOME/status"
 git clone https://github.com/cse-labs/imdb-app /workspaces/imdb-app
 git clone https://github.com/microsoft/webvalidate /workspaces/webvalidate
 git clone https://github.com/dfcarpenter/flux2-kustomize-azarc.git /workspaces/gitops-flux-azarc
+git clone https://github.com/Azure/arc-cicd-demo-src /workspaces/arc-gitops/arc-cicd-demo-src 
+git clone https://github.com/Azure/arc-cicd-demo-gitops /workspaces/arc-gitops/arc-cicd-demo-gitops
 
 # restore the repos
 dotnet restore /workspaces/webvalidate/src/webvalidate.sln
