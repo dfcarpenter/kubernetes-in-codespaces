@@ -58,6 +58,10 @@ chmod a+x "/usr/local/bin/tk"
 echo "adding flux cli"
 curl -s https://fluxcd.io/install.sh | sudo bash
 
+echo "adding argocd"
+curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+chmod +x /usr/local/bin/argocd
+
 echo "creating k3d cluster"
 kic cluster rebuild
 

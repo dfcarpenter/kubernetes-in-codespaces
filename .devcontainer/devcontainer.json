@@ -48,6 +48,7 @@
 		"mutantdino.resourcemonitor",
 		"humao.rest-client",
 		"timonwong.shellcheck",
+		"MS-vsliveshare.vsliveshare-pack"
 	],
 
 	"waitFor": "postCreateCommand",
