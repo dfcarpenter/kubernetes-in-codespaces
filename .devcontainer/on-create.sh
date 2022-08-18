@@ -11,6 +11,7 @@ git clone https://github.com/microsoft/webvalidate /workspaces/webvalidate
 git clone https://github.com/dfcarpenter/flux2-kustomize-azarc.git /workspaces/gitops-flux-azarc
 git clone https://github.com/Azure/arc-cicd-demo-src /workspaces/arc-gitops/arc-cicd-demo-src 
 git clone https://github.com/Azure/arc-cicd-demo-gitops /workspaces/arc-gitops/arc-cicd-demo-gitops
+git clone https://github.com/dfcarpenter/gitops-flux2-kustomize-helm-mt /workspaces/gitops-flux2-kustomize-helm-mt 
 
 # restore the repos
 dotnet restore /workspaces/webvalidate/src/webvalidate.sln
@@ -51,12 +52,17 @@ docker pull ghcr.io/cse-labs/webv-red:latest
 echo "generating kic completion"
 kic completion zsh > "$HOME/.oh-my-zsh/completions/_kic"
 
+echo "adding k9s"
+curl -fSL -o "/usr/local/bin/k9s" "https://github.com/derailed/k9s/releases/download/v0.26.3/k9s_Linux_x86_64"
+sudo chmod a+x /usr/local/bin/k9s
+
 echo "adding grafana tanka cli"
 curl -fSL -o "/usr/local/bin/tk" "https://github.com/grafana/tanka/releases/download/v0.22.1/tk-linux-amd64"
 chmod a+x "/usr/local/bin/tk"
 
-echo "adding flux cli"
-curl -s https://fluxcd.io/install.sh | sudo bash
+echo "adding jsonnet bundler for use with Tanka"
+sudo curl -Lo /usr/local/bin/jb https://github.com/jsonnet-bundler/jsonnet-bundler/releases/latest/download/jb-linux-amd64
+sudo chmod a+x /usr/local/bin/jb
 
 echo "adding argocd"
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
